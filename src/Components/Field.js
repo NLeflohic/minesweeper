@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 const Field = (props) => {
 	const [status, setStatus] = useState(0);
+	const [icon, setIcon] = useState();
 	const fieldInfo = {};
 
 	const checkBombAround = (row, col) => {
@@ -50,16 +51,29 @@ const Field = (props) => {
 		}
 	}
 
+	const getIcon = (fieldStatus) => {
+		if (fieldStatus === 9) {
+			return "☠️";
+		} else if (fieldStatus === 0) {
+			console.log(fieldStatus);
+			return "✅";
+		} else {
+			return fieldStatus;
+		}
+	}
+
 	return (
 		<button className="field" onClick={() => {
-			const res = checkFieldStatus();
-			setStatus(res);
+			const result = checkFieldStatus();
+			setStatus(result);
 			const newgamearea = [...props.game];
-			newgamearea[props.row][props.col] = res;
+			newgamearea[props.row][props.col] = result;
 			props.setgame(newgamearea);
+			const icon = getIcon(result);
+			setIcon(icon);
 		}
 		}>
-			{status}
+			{icon}
 		</button>
 	);
 };
