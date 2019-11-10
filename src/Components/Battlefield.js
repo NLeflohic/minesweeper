@@ -38,7 +38,7 @@ const Battlefield = (props) => {
 		gameOverDiv = (
 			<div className="game-end">
 				<h1>Game Over</h1>
-				<button>New game</button>
+				<button className="newgame" onClick={() => window.location.reload()}>New game</button>
 			</div>);
 	};
 
@@ -46,7 +46,7 @@ const Battlefield = (props) => {
 		winDiv = (
 			<div className="game-end">
 				<h1>Victory !!!</h1>
-				<button>New game</button>
+				<button className="newgame" onClick={() => window.location.reload()}>New game</button>
 			</div>);
 	};
 

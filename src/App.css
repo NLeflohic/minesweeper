@@ -26,3 +26,9 @@
   align-items: center;
 }
 
+.newgame {
+  font-size: 20px;
+  background-color: lightgray;
+  padding: 10px;
+}
+
