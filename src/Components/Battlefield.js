@@ -14,7 +14,7 @@ const Battlefield = (props) => {
 				key: i.toString(),
 				value: <RowField matrix={props.matrix} id={i} gamearea={gameArea} setgamearea={setGameArea}
 					gameover={gameOver} gameoverfunc={setGameOver}
-					win={win} winfunc={setWin}
+					win={win} winfunc={setWin} tabrow={tabRow}
 				/>
 			})
 		}
@@ -42,7 +42,7 @@ const Battlefield = (props) => {
 			</div>);
 	};
 
-	if (winDiv === 21) {
+	if (win === props.nbbombmax) {
 		winDiv = (
 			<div className="game-end">
 				<h1>Victory !!!</h1>

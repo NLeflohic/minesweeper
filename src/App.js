@@ -3,12 +3,14 @@ import Battlefield from "./Components/Battlefield";
 import './App.css';
 
 function App() {
+  const nbBombMax = 15;
+
   const initBombMatrix = (matrix, line, col) => {
-    const nbBombMax = 10;
+
     let nbBomb = 0;
     for (let i = 0; i < line; i++) {
       for (let j = 0; j < col; j++) {
-        if ((Math.floor(Math.random() * 2)) === 1) {
+        if (Math.round(Math.random()) === 1) {
           matrix[i][j] = 1;
           nbBomb++;
           if (nbBomb === nbBombMax) {
@@ -28,7 +30,7 @@ function App() {
   return (
     <div className="App">
       <h1 className="title">Minesweeper</h1>
-      <Battlefield matrix={bombMatrix} gamearea={battlefield} />
+      <Battlefield matrix={bombMatrix} gamearea={battlefield} nbbombmax={nbBombMax} />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Field = (props) => {
-	const [status, setStatus] = useState(0);
+	const [status, setStatus] = useState(-1);
 	const [icon, setIcon] = useState();
 	const fieldInfo = {};
 
@@ -58,15 +58,18 @@ const Field = (props) => {
 		} else if (fieldStatus === 0) {
 			console.log(fieldStatus);
 			return "✅";
-		} else {
+		} else if (fieldStatus === -1) {
+			return "⚠️"
+		}
+		else {
 			return fieldStatus;
 		}
 	}
 
 	return (
-		<button className="field" onClick={() => {
+		<button className="field" onClick={(event) => {
 			if (props.gameover === 0) {
-				props.winfunc(props.win + 1);
+				console.log("click")
 				const result = checkFieldStatus();
 				setStatus(result);
 				const newgamearea = [...props.game];
@@ -76,9 +79,31 @@ const Field = (props) => {
 				setIcon(icon);
 			}
 		}
-		}>
+		} onContextMenu={(e) => {
+			e.preventDefault();
+			if (props.gameover === 0) {
+				console.log(status);
+				if (status === -1) {
+					setStatus(-2);
+					const icon = getIcon(status);
+					setIcon(icon);
+					const result = checkFieldStatus();
+					if (result === 9) {
+						props.winfunc(props.win + 1);
+					}
+				} else if (status === -2) {
+					setStatus(-1);
+					setIcon("");
+					const result = checkFieldStatus();
+					if (result === 9) {
+						props.winfunc(props.win - 1);
+					}
+				}
+			}
+		}}
+		>
 			{icon}
-		</button>
+		</button >
 	);
 };
 

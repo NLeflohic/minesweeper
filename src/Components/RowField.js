@@ -9,7 +9,7 @@ const RowField = (props) => {
 				key: i.toString(),
 				value: <Field matrix={props.matrix} row={props.id} col={i} game={props.gamearea}
 					setgame={props.setgamearea} gameover={props.gameover} gameoverfunc={props.gameoverfunc}
-					win={props.win} winfunc={props.winfunc}
+					win={props.win} winfunc={props.winfunc} tabrow={props.tabrow} tabbattle={tabBattlefield}
 				/>
 			});
 		}
