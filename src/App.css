@@ -17,6 +17,12 @@
   height: 30px;
   background-color: lightgray;
   font-size: 20px;
+}
 
+.game-end {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 

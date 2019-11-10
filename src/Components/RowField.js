@@ -7,7 +7,10 @@ const RowField = (props) => {
 		for (let i = 0; i < 6; i++) {
 			tabBattlefield.push({
 				key: i.toString(),
-				value: <Field matrix={props.matrix} row={props.id} col={i} game={props.gamearea} setgame={props.setgamearea} />
+				value: <Field matrix={props.matrix} row={props.id} col={i} game={props.gamearea}
+					setgame={props.setgamearea} gameover={props.gameover} gameoverfunc={props.gameoverfunc}
+					win={props.win} winfunc={props.winfunc}
+				/>
 			});
 		}
 	};

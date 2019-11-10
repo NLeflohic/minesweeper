@@ -53,6 +53,7 @@ const Field = (props) => {
 
 	const getIcon = (fieldStatus) => {
 		if (fieldStatus === 9) {
+			props.gameoverfunc(1);
 			return "☠️";
 		} else if (fieldStatus === 0) {
 			console.log(fieldStatus);
@@ -64,13 +65,16 @@ const Field = (props) => {
 
 	return (
 		<button className="field" onClick={() => {
-			const result = checkFieldStatus();
-			setStatus(result);
-			const newgamearea = [...props.game];
-			newgamearea[props.row][props.col] = result;
-			props.setgame(newgamearea);
-			const icon = getIcon(result);
-			setIcon(icon);
+			if (props.gameover === 0) {
+				props.winfunc(props.win + 1);
+				const result = checkFieldStatus();
+				setStatus(result);
+				const newgamearea = [...props.game];
+				newgamearea[props.row][props.col] = result;
+				props.setgame(newgamearea);
+				const icon = getIcon(result);
+				setIcon(icon);
+			}
 		}
 		}>
 			{icon}

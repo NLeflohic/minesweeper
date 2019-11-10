@@ -4,13 +4,18 @@ import RowField from "./RowField";
 const Battlefield = (props) => {
 	const [gameArea, setGameArea] = useState([]);
 	const [init, setInit] = useState(0);
+	const [gameOver, setGameOver] = useState(0);
+	const [win, setWin] = useState(0);
 
 	const tabRow = [];
 	const initRow = (nbRow) => {
 		for (let i = 0; i < nbRow; i++) {
 			tabRow.push({
 				key: i.toString(),
-				value: <RowField matrix={props.matrix} id={i} gamearea={gameArea} setgamearea={setGameArea} />
+				value: <RowField matrix={props.matrix} id={i} gamearea={gameArea} setgamearea={setGameArea}
+					gameover={gameOver} gameoverfunc={setGameOver}
+					win={win} winfunc={setWin}
+				/>
 			})
 		}
 	}
@@ -26,6 +31,26 @@ const Battlefield = (props) => {
 
 	initRow(6);
 
+	let gameOverDiv = "";
+	let winDiv = "";
+
+	if (gameOver === 1) {
+		gameOverDiv = (
+			<div className="game-end">
+				<h1>Game Over</h1>
+				<button>New game</button>
+			</div>);
+	};
+
+	if (winDiv === 21) {
+		winDiv = (
+			<div className="game-end">
+				<h1>Victory !!!</h1>
+				<button>New game</button>
+			</div>);
+	};
+
+
 	return (
 		<div className="battlefield">
 			<div className="row-battlefield" onClick={onClickEvent} >
@@ -34,14 +59,11 @@ const Battlefield = (props) => {
 						return (<div key={row.key}>{row.value}</div>)
 					})
 				}
-				{/* <RowField matrix={props.matrix} id={0} gamearea={gameArea} setgamearea={setGameArea} /> */}
-				{/* <RowField matrix={props.matrix} id={1} gamearea={gameArea} setgamearea={setGameArea} /> */}
-				{/* <RowField matrix={props.matrix} id={2} gamearea={gameArea} setgamearea={setGameArea} /> */}
-				{/* <RowField matrix={props.matrix} id={3} gamearea={gameArea} setgamearea={setGameArea} /> */}
-				{/* <RowField matrix={props.matrix} id={4} gamearea={gameArea} setgamearea={setGameArea} /> */}
-				{/* <RowField matrix={props.matrix} id={5} gamearea={gameArea} setgamearea={setGameArea} /> */}
 			</div>
-		</div >)
+			{gameOverDiv}
+		</div >
+	)
+
 }
 
 export default Battlefield;

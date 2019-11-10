@@ -4,7 +4,7 @@ import './App.css';
 
 function App() {
   const initBombMatrix = (matrix, line, col) => {
-    const nbBombMax = 15;
+    const nbBombMax = 10;
     let nbBomb = 0;
     for (let i = 0; i < line; i++) {
       for (let j = 0; j < col; j++) {
@@ -19,7 +19,6 @@ function App() {
     }
     return matrix;
   }
-
 
   let bombMatrix = new Array(6).fill(0).map(() => new Array(6).fill(0));
   bombMatrix = initBombMatrix(bombMatrix, 6, 6);
