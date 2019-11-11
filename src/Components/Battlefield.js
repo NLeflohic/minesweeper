@@ -14,7 +14,7 @@ const Battlefield = (props) => {
 				key: i.toString(),
 				value: <RowField matrix={props.matrix} id={i} gamearea={gameArea} setgamearea={setGameArea}
 					gameover={gameOver} gameoverfunc={setGameOver}
-					win={win} winfunc={setWin} tabrow={tabRow}
+					win={win} winfunc={setWin} tabrow={tabRow} bombmatrix={props.matrix}
 				/>
 			})
 		}

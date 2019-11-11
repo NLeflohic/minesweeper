@@ -3,7 +3,7 @@ import Battlefield from "./Components/Battlefield";
 import './App.css';
 
 function App() {
-  const nbBombMax = 15;
+  const nbBombMax = 10;
 
   const initBombMatrix = (matrix, line, col) => {
 
@@ -24,7 +24,7 @@ function App() {
 
   let bombMatrix = new Array(6).fill(0).map(() => new Array(6).fill(0));
   bombMatrix = initBombMatrix(bombMatrix, 6, 6);
-  let battlefield = new Array(6).fill(0).map(() => new Array(6).fill(0));
+  let battlefield = new Array(6).fill(-2).map(() => new Array(6).fill(-2));
 
   console.log(battlefield);
   return (
